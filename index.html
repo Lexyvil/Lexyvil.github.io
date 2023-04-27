@@ -6,6 +6,10 @@
 		<link rel="icon" href="images/island_favicon.ico">
 
 		<style>
+			body {
+				background: linear-gradient(0deg, #00BB00 5%, #00FFFF 25%, #6666FF);
+			}
+			
 			img {
 				border-radius:10%; 
 				border-width:2px;
@@ -30,18 +34,38 @@
 				width: 10%;
 			}
 			
-			.body-bg {
-				background-repeat: no-repeat;
-				background-size: cover;
-				background: linear-gradient(0deg, #FFFFFF, #00FFFF);
+			.bg {
+				width: 100%;
+				height: 100%;
+                background-attachment: fixed;
+                background-position: cover;
 			}
-			
+			         
+			 .btn-grad {
+				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
+				margin: 10px;
+				padding: 15px 45px;
+				text-align: center;
+				text-transform: uppercase;
+				transition: 0.5s;
+				background-size: 200% auto;
+				color: white;            
+				box-shadow: 0 0 20px #eee;
+				border-radius: 10px;
+				display: block;
+			  }
+
+			  .btn-grad:hover {
+				background-position: right center; /* change the direction of the change here */
+				color: #fff;
+				text-decoration: none;
+			  }
+         
 		</style>
 	</head>
 
-
-	<body class="body-bg">
-		<div name="title">
+	<body class="bg">
+		<div name="title" class="centerText fontPapyrus">
 			<h1 class="centerText">Island of Suffering</h1>
 			
 		</div> 
@@ -52,13 +76,28 @@
 			<p> <span>Thirst: </span> <!-- --><span>100</span> </p>
 		</div> 
 
-		<div name="game" class="centerText">
+		<div name="game" class="centerText fontPapyrus">
 			<img class="centerImg" src="https://t3.ftcdn.net/jpg/02/79/69/86/360_F_279698696_w2RYpPUYlRs68SjjD6NQWcMaBiv1Hhx3.jpg" alt="An image of an island"><br>
 			
-			<button type="button">Look for Water</button> <!-- --> <button type="button">Look for Food</button>  <!-- --> <button type="button">Wait</button>
+			<button class="btn-grad" type="button">Look for Water</button>
+			<button class="btn-grad"type="button">Look for Food</button>
+			<button class="btn-grad" id="bWait"onclick="bWait()">Wait</button>
 		</div>
 
+	<!-- js scripts must always be either before /body, or within head element -->
+	
+	<script>
+	
+		var bWait() {
+			body {
+				background-color: white;
+			}
+		}
+	
 		
+	</script>
+	
+	
 	</body>
 
 </html>
