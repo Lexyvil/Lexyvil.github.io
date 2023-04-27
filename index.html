@@ -11,8 +11,8 @@
 			}
 			
 			img {
-				border-radius:10%; 
-				border-width:2px;
+				border-radius: 20%; 
+				border-width: 20px;
 			}
 		
 			.button {
@@ -33,6 +33,14 @@
 				margin-right: auto;
 				width: 10%;
 			}
+			.centerImg:hover {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 10%;
+				border-radius: 5%; 
+				border-width: 5px;
+			}
 			
 			.bg {
 				width: 100%;
@@ -42,12 +50,13 @@
 			}
 			         
 			 .btn-grad {
+			 
 				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
 				margin: 10px;
 				padding: 15px 45px;
 				text-align: center;
 				text-transform: uppercase;
-				transition: 0.5s;
+				transition: 0.12s;
 				background-size: 200% auto;
 				color: white;            
 				box-shadow: 0 0 20px #eee;
@@ -60,6 +69,12 @@
 				color: #fff;
 				text-decoration: none;
 			  }
+			  .btn-grad:active {
+			    background-image: linear-gradient(to right, #ff0000 0%, #ff0000  51%, #ff0000  100%);
+				color: #f00;
+				text-decoration: none;
+			  }
+			  
          
 		</style>
 	</head>
@@ -79,21 +94,24 @@
 		<div name="game" class="centerText fontPapyrus">
 			<img class="centerImg" src="https://t3.ftcdn.net/jpg/02/79/69/86/360_F_279698696_w2RYpPUYlRs68SjjD6NQWcMaBiv1Hhx3.jpg" alt="An image of an island"><br>
 			
-			<button class="btn-grad" type="button">Look for Water</button>
-			<button class="btn-grad"type="button">Look for Food</button>
-			<button class="btn-grad" id="bWait"onclick="bWait()">Wait</button>
+			<button id="bLookForWater"class="btn-grad" onclick="butLookForWater()">Look for Water</button>
+			<button id="bLookForFood"class="btn-grad" onclick="butLookForFood()">Look for Food</button>
+			<button id="bWait" class="btn-grad" onclick="butWait()">Wait</button>
 		</div>
 
 	<!-- js scripts must always be either before /body, or within head element -->
 	
 	<script>
 	
-		var bWait() {
-			body {
-				background-color: white;
-			}
-		}
-	
+	function butLookForWater() {
+		document.getElementById("bLookForWater").innerHTML = "You're dying.";
+	}
+	function butLookForFood() {
+		document.getElementById("bLookForFood").innerHTML = "You're dying.";
+	}
+	function butWait() {
+		document.getElementById("bWait").innerHTML = "You're dead.";
+	}
 		
 	</script>
 	
