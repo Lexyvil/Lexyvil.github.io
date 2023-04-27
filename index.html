@@ -7,7 +7,7 @@
 
 		<style>
 			body {
-				background: linear-gradient(0deg, #00BB00 5%, #00FFFF 25%, #6666FF);
+				background: linear-gradient(0deg, #33BB33 7%, #00FFFF 25%, #8888FF);
 			}
 			
 			img {
@@ -53,7 +53,7 @@
 			 
 				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
 				margin: 10px;
-				padding: 15px 45px;
+				padding: 10px 15px;
 				text-align: center;
 				text-transform: uppercase;
 				transition: 0.12s;
@@ -61,7 +61,6 @@
 				color: white;            
 				box-shadow: 0 0 20px #eee;
 				border-radius: 10px;
-				display: block;
 			  }
 
 			  .btn-grad:hover {
@@ -86,16 +85,16 @@
 		</div> 
 		
 		<div name="hud" class="centerText">
-			<p> You washed up ashore on an island.<p><br>
-			<p> <span>Hunger: </span> <!-- --><span>100</span> </p>
-			<p> <span>Thirst: </span> <!-- --><span>100</span> </p>
+			<p id="strHudMsg"> You washed ashore on an island.<p><br>
+			<p> <span>Hunger: </span> <!-- --><span id="strHunger">100</span> </p>
+			<p> <span>Thirst: </span> <!-- --><span id="strThirst">100</span> </p>
 		</div> 
 
 		<div name="game" class="centerText fontPapyrus">
 			<img class="centerImg" src="https://t3.ftcdn.net/jpg/02/79/69/86/360_F_279698696_w2RYpPUYlRs68SjjD6NQWcMaBiv1Hhx3.jpg" alt="An image of an island"><br>
 			
-			<button id="bLookForWater"class="btn-grad" onclick="butLookForWater()">Look for Water</button>
 			<button id="bLookForFood"class="btn-grad" onclick="butLookForFood()">Look for Food</button>
+			<button id="bLookForWater"class="btn-grad" onclick="butLookForWater()">Look for Water</button><br>
 			<button id="bWait" class="btn-grad" onclick="butWait()">Wait</button>
 		</div>
 
@@ -103,16 +102,30 @@
 	
 	<script>
 	
-	function butLookForWater() {
-		document.getElementById("bLookForWater").innerHTML = "You're dying.";
-	}
+	var intHung = 100;
+	var intThirst = 100;
+
+
 	function butLookForFood() {
-		document.getElementById("bLookForFood").innerHTML = "You're dying.";
+		document.getElementById("strHudMsg").innerHTML = "You try looking for food...";
+		updateStats();
+	}
+	function butLookForWater() {
+		document.getElementById("strHudMsg").innerHTML = "You try looking for water...";
+		updateStats();
 	}
 	function butWait() {
-		document.getElementById("bWait").innerHTML = "You're dead.";
+		document.getElementById("strHudMsg").innerHTML = "You just wait there...";
+		updateStats();
 	}
 		
+		
+	function updateStats() {
+		--intHung;
+		--intThirst;
+		document.getElementById("strHunger").innerHTML = intHung;
+		document.getElementById("strThirst").innerHTML = intThirst;
+	}	
 	</script>
 	
 	
