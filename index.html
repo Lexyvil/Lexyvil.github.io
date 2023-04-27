@@ -1,26 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Test 3</title>
-	<link rel="icon" href="images/favicon.ico">
 
-	<style>
-		img {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-			width: 15%;
-		}
-		h1 { font-family:papyrus; }
-		h2 { font-family:papyrus; }
-	</style>
-</head>
+	<head>
+		<title>The Island of Suffering</title>
+		<link rel="icon" href="images/island_favicon.ico">
+
+		<style>
+			img {
+				border-radius:10%; 
+				border-width:2px;
+			}
+		
+			.button {
+				display: block; <!-- -->
+				margin-left: auto;
+				margin-right: auto;
+				width: 15%;
+			}
+			.fontPapyrus {
+				font-family:papyrus;
+			}
+			.centerText {
+				text-align:center;
+			}
+			.centerImg {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 10%;
+			}
+			
+			.body-bg {
+				background-repeat: no-repeat;
+				background-size: cover;
+				background: linear-gradient(0deg, #FFFFFF, #00FFFF);
+			}
+			
+		</style>
+	</head>
 
 
-<body style="background-color:white">
-	
-	<h1 style="text-align:center">This is Urist</h1>
-	<h2 style="text-align:center"><strong>He knows where to find danger</strong></h2>
-	<img  style="border-radius:10%; border-style:solid; border-width:2px;" src="https://i.redd.it/almstty19ai41.jpg" alt="An image of a Dwarf pointing where is best to die.">
-</body>
+	<body class="body-bg">
+		<div name="title">
+			<h1 class="centerText">Island of Suffering</h1>
+			
+		</div> 
+		
+		<div name="hud" class="centerText">
+			<p> You washed up ashore on an island.<p><br>
+			<p> <span>Hunger: </span> <!-- --><span>100</span> </p>
+			<p> <span>Thirst: </span> <!-- --><span>100</span> </p>
+		</div> 
+
+		<div name="game" class="centerText">
+			<img class="centerImg" src="https://t3.ftcdn.net/jpg/02/79/69/86/360_F_279698696_w2RYpPUYlRs68SjjD6NQWcMaBiv1Hhx3.jpg" alt="An image of an island"><br>
+			
+			<button type="button">Look for Water</button> <!-- --> <button type="button">Look for Food</button>  <!-- --> <button type="button">Wait</button>
+		</div>
+
+		
+	</body>
+
 </html>
