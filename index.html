@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<title>The Island of Suffering</title>
 		<link rel="icon" href="images/island_favicon.ico">
+		<link rel="stylesheet" href="stylesheets/image.css">
+		<link rel="stylesheet" href="stylesheets/text.css">
+		
+		
 
 		<style>
 			body {
-				background: linear-gradient(0deg, #33BB33 7%, #00FFFF 25%, #8888FF);
-			}
-			
-			img {
-				border-radius: 20%; 
-				border-width: 20px;
+				background: linear-gradient(0deg, #00FFFF 25%, #8888FF);
+				width: 100%;
+				height: 100%;
+                background-attachment: fixed;
+                background-position: cover;
 			}
 		
 			.button {
@@ -21,36 +23,8 @@
 				margin-right: auto;
 				width: 15%;
 			}
-			.fontPapyrus {
-				font-family:papyrus;
-			}
-			.centerText {
-				text-align:center;
-			}
-			.centerImg {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				width: 10%;
-			}
-			.centerImg:hover {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				width: 10%;
-				border-radius: 5%; 
-				border-width: 5px;
-			}
-			
-			.bg {
-				width: 100%;
-				height: 100%;
-                background-attachment: fixed;
-                background-position: cover;
-			}
 			         
-			 .btn-grad {
-			 
+			.btn-grad {
 				background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
 				margin: 10px;
 				padding: 10px 15px;
@@ -61,70 +35,147 @@
 				color: white;            
 				box-shadow: 0 0 20px #eee;
 				border-radius: 10px;
-			  }
+			}
 
-			  .btn-grad:hover {
+			.btn-grad:hover {
 				background-position: right center; /* change the direction of the change here */
 				color: #fff;
 				text-decoration: none;
-			  }
-			  .btn-grad:active {
+			}
+			.btn-grad:active {
 			    background-image: linear-gradient(to right, #ff0000 0%, #ff0000  51%, #ff0000  100%);
 				color: #f00;
 				text-decoration: none;
-			  }
+			}
 			  
          
 		</style>
 	</head>
 
-	<body class="bg">
-		<div name="title" class="centerText fontPapyrus">
-			<h1 class="centerText">Island of Suffering</h1>
+	<body>
+		<div name="title" class="centerText textFontPapyrus">
+			
+			<h1 class="textCenter">Island of Suffering</h1>
+			
 			
 		</div> 
 		
-		<div name="hud" class="centerText">
-			<p id="strHudMsg"> You washed ashore on an island.<p><br>
-			<p> <span>Hunger: </span> <!-- --><span id="strHunger">100</span> </p>
-			<p> <span>Thirst: </span> <!-- --><span id="strThirst">100</span> </p>
+		
+		<div name="hud" class="textCenter">
+			<p>  <span>Day </span>       <span id="strHudDay">0</span>  </p>
+			<p>	 <span>Time:</span>  <span id="strHudHours">0:00</span>      </p><br>
+			<p>  <span>Hunger: </span>     <span id="strHudHunger">100</span>     </p>
+			<p>  <span>Thirst: </span>     <span id="strHudThirst">100</span>     </p>
+			<img class="imgCenter imgSizeSmall" src="https://t3.ftcdn.net/jpg/02/79/69/86/360_F_279698696_w2RYpPUYlRs68SjjD6NQWcMaBiv1Hhx3.jpg" alt="An image of an island">
+			<p>  <span id="strHudMsg">You washed ashore on an island.</span>    </p>
 		</div> 
 
-		<div name="game" class="centerText fontPapyrus">
-			<img class="centerImg" src="https://t3.ftcdn.net/jpg/02/79/69/86/360_F_279698696_w2RYpPUYlRs68SjjD6NQWcMaBiv1Hhx3.jpg" alt="An image of an island"><br>
-			
-			<button id="bLookForFood"class="btn-grad" onclick="butLookForFood()">Look for Food</button>
-			<button id="bLookForWater"class="btn-grad" onclick="butLookForWater()">Look for Water</button><br>
+
+		<div name="game" class="textCenter textFontPapyrus">
+			<button id="bLookForFood" class="btn-grad" onclick="butLookForFood()">Look for Food</button>
+			<button id="bLookForWater" class="btn-grad" onclick="butLookForWater()">Look for Water</button><br>
 			<button id="bWait" class="btn-grad" onclick="butWait()">Wait</button>
 		</div>
 
-	<!-- js scripts must always be either before /body, or within head element -->
+	<!-- js code must always be either before /body, or within head element -->
 	
 	<script>
 	
-	var intHung = 100;
-	var intThirst = 100;
-
-
+	
+	<!-- Init -->
+			var intDays = 0;
+			
+			var intHours = 5;
+			document.getElementById("strHudHours").innerHTML = intHours+":00";
+			var intMinutes = 0;
+			
+			
+			<!-- Stats -->
+			var intHung = 100;
+			var intThirst = 100;
+			var intEnergy = 100;
+			var isAlive = true;
+	<!-- end Init -->
+	
+	
+	
 	function butLookForFood() {
 		document.getElementById("strHudMsg").innerHTML = "You try looking for food...";
-		updateStats();
+		action();
 	}
 	function butLookForWater() {
 		document.getElementById("strHudMsg").innerHTML = "You try looking for water...";
-		updateStats();
+		action();
 	}
 	function butWait() {
 		document.getElementById("strHudMsg").innerHTML = "You just wait there...";
-		updateStats();
+		action();
 	}
 		
 		
-	function updateStats() {
+	function action() {
+	
+		<!-- Update -->
 		--intHung;
 		--intThirst;
-		document.getElementById("strHunger").innerHTML = intHung;
-		document.getElementById("strThirst").innerHTML = intThirst;
+		intMinutes += 3;
+		if (intMinutes >= 6) {
+			intMinutes = 0;
+			intHours++;
+		}
+		
+		
+		if (intHours > 23) {
+		intHours = 0;
+		intDays++;
+		}
+		
+		
+		intEnergy -= (1/intHung)
+		
+		<!-- Draw -->
+		document.getElementById("strHudHunger").innerHTML = intHung;
+		document.getElementById("strHudThirst").innerHTML = intThirst;
+		document.getElementById("strHudDay").innerHTML = intDays;
+		document.getElementById("strHudHours").innerHTML = intHours+":"+intMinutes+"0";
+		
+		if (intHours == 5) {
+			document.querySelectorAll('p').forEach(e => e.style.color = "black");
+			document.querySelectorAll('h1').forEach(e => e.style.color = "black");
+			document.body.style = "background: linear-gradient(0deg, #4F8E90 25%, #786745); width: 100%; height: 100%; background-attachment: fixed; background-position: cover;" <!-- Good -->
+		}
+
+		if (intHours == 6) {
+			document.body.style = "background: linear-gradient(0deg, #54ACCC 25%, #888895); width: 100%; height: 100%; background-attachment: fixed; background-position: cover;" <!-- Good -->
+		}
+		
+		if (intHours == 7) {
+			document.body.style = "background: linear-gradient(0deg, #5F9EA0 25%, #887755); width: 100%; height: 100%; background-attachment: fixed; background-position: cover;" <!-- Good -->
+		}
+		
+		if (intHours == 7) {
+			document.body.style = "background: linear-gradient(0deg, #00CCCC 25%, #8875CC); width: 100%; height: 100%; background-attachment: fixed; background-position: cover;"
+		}
+		
+		if (intHours == 8) {
+			document.body.style = "background: linear-gradient(0deg, #00FFFF 25%, #8888FF); width: 100%; height: 100%; background-attachment: fixed; background-position: cover;"
+		}
+		
+		if (intHours == 19) {
+			document.body.style = "background: linear-gradient(0deg, #FF9EA0 25%, #BBA200); width: 100%; height: 100%; background-attachment: fixed; background-position: cover;"
+		}
+		
+		if (intHours == 20) {
+			document.body.style = "background: linear-gradient(0deg, #BB6633 25%, #774500); width: 100%; height: 100%; background-attachment: fixed; background-position: cover;"
+		}
+		
+		if (intHours == 21) {
+			document.querySelectorAll('p').forEach(e => e.style.color = "white");
+			document.querySelectorAll('h1').forEach(e => e.style.color = "white");
+			document.body.style = "background: linear-gradient(0deg, #141215 25%, #181115); width: 100%; height: 100%; background-attachment: fixed; background-position: cover;";
+		}
+		
+
 	}	
 	</script>
 	

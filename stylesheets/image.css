@@ -1,0 +1,12 @@
+
+/* Centers an image */ 
+.imgCenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.imgSizeSmall {
+	max-width: 10%;
+	height: auto;
+}
